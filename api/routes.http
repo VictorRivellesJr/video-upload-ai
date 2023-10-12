@@ -13,3 +13,26 @@ Content-Type: audio/mpeg
 
 < ./example.mp3
 ------test--
+
+###
+
+# @name create-transcription
+POST http://localhost:3333/videos/1344f46d-4651-46cb-8997-146e725fada8/transcription
+Content-Type: application/json
+
+{
+  "prompt": "audio, contents, file"
+}
+
+
+###
+
+# @name generate-ai-completion
+POST http://localhost:3333/ai/complete
+Content-Type: application/json
+
+{
+  "videoId": "1344f46d-4651-46cb-8997-146e725fada8",
+  "temperature": 0.1,
+  "template": "Gere um resumo sucinto da transcrição do vídeo informada a seguir: '''{transcription}''' "
+}
